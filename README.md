@@ -1,16 +1,55 @@
-# flutter_map_onboarding
+## 📱 Uygulama Hakkında
 
-A new Flutter project.
+Bu Flutter projesi, harita tabanlı bir mobil uygulamanın onboarding ekranlarıyla nasıl entegre edileceğini gösteren öğretici bir örnektir. Uygulama MVVM mimarisi ile yapılandırılmış olup, `AutoRoute` kullanılarak modern ve yönetilebilir bir sayfa yönlendirme sistemi uygulanmıştır.
 
-## Getting Started
+### 🔍 Özellikler
+- ✅ **3 sayfalı onboarding** deneyimi
+- 🗺️ **Harita gösterimi** (Flutter Map, Google Maps değildir)
+- 📍 **Marker** (konum) gösterimi
+- ℹ️ Marker'lara tıklayınca **bilgi penceresi (popup/snippet)**
+- 👀 Temiz dosya yapısı ve **MVVM mimarisi**
+- 🔁 `AutoRoute` ile güçlü **sayfa yönlendirme**
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🧭 Sayfa Yapısı ve Geçişler
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Onboarding Ekranı (`OnboardingScreen`)**  
+  Uygulama açıldığında kullanıcıyı karşılar. Kullanıcı tamamladığında harita ekranına yönlendirilir.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Harita Ekranı (`MapScreen`)**  
+  Türkiye'den örnek konumlar `PlaceModel` listesi ile gösterilir.
+
+- **Detay Ekranı (`DetailScreen`)**  
+  Her bir marker’a tıklandığında, detay sayfasına geçilir.
+
+---
+
+## 🔧 Kullanılan Teknolojiler ve Paketler
+
+| Teknoloji        | Açıklama                                |
+|------------------|------------------------------------------|
+| Flutter          | Mobil uygulama geliştirme framework'ü   |
+| AutoRoute        | Sayfa yönlendirme ve routing yönetimi   |
+| Provider         | MVVM yapısı için state management       |
+| flutter_map      | Açık kaynak harita gösterimi            |
+| Lottie           | Onboarding ekranı için animasyonlar     |
+
+---## 📁 Dosya Yapısı
+lib/
+│
+├── model/ # Veri model sınıfı (PlaceModel)
+├── view/ # Tüm sayfalar (map, onboarding, detail)
+├── viewmodel/ # ViewModel katmanı (MapTileViewModel)
+├── routes/ # AutoRoute yapılandırması (app_router.dart)
+├── data/ # Mock veri listesi (mock_data.dart)
+└── main.dart # Uygulama giriş noktası
+
+
+## 🚀 Kurulum ve Çalıştırma
+
+```bash
+git clone https://github.com/kullanici/flutter_onboarding_map.git
+cd flutter_onboarding_map
+flutter pub get
+flutter run
