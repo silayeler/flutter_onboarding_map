@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../routes/app_router.dart';
+import '../../services/shared_prefs_service.dart'; // Servis import edildi
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {
@@ -12,9 +13,8 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  late final PageController
-      _pageController; //pageview bilesinini kontrol etmek icin
-// late degiskenin sonradan, ama sadece bir kez atanacağını belirtir
+  late final PageController _pageController;
+
   final List<String> lottieAnimations = [
     'assets/explore.json',
     'assets/locatin.json',
@@ -35,8 +35,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   void dispose() {
-    _pageController.dispose(); 
+    _pageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _completeOnboarding() async {
+    await SharedPrefsService().markOnboardingSeen();
+    context.replaceRoute(const MapRoute());
   }
 
   @override
@@ -59,10 +64,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Stack(
               children: [
                 PageView.builder(
-                  /* !!Her onboarding sayfası için bir ekran olusturuyor*/
                   controller: _pageController,
                   itemCount: lottieAnimations.length,
-                  physics: const BouncingScrollPhysics(), // alternatif kaydrımalar var
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -85,9 +89,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         const SizedBox(height: 40),
                         if (index == lottieAnimations.length - 1)
                           ElevatedButton(
-                            onPressed: () {
-                              context.replaceRoute(const MapRoute());
-                            },
+                            onPressed: _completeOnboarding,
                             child: const Text(
                               'Hadi Başlayalım',
                               style: TextStyle(color: Colors.red),
@@ -97,15 +99,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     );
                   },
                 ),
-                //ATLA BUTON
                 Positioned(
                   top: 0,
                   right: 0,
                   child: TextButton(
-                    onPressed: () {
-                      context.replaceRoute(
-                          const MapRoute()); // maproute gec ve oldugun sayfayı stackten sil komutu
-                    },
+                    onPressed: _completeOnboarding,
                     child: const Text(
                       'Atla',
                       style: TextStyle(color: Colors.red),

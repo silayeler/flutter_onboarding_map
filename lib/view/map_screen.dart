@@ -3,7 +3,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodel/map_tile_view_model.dart';
-import '../../model/place_model.dart';
 import 'package:auto_route/auto_route.dart';
 import '../routes/app_router.dart';
 
@@ -37,7 +36,7 @@ class MapScreen extends StatelessWidget {
                 );
               }).toList();
             },
-            icon: const Icon(Icons.layers), 
+            icon: const Icon(Icons.layers),
           )
         ],
       ),
