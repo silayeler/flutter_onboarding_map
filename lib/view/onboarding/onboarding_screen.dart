@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../routes/app_router.dart';
-import '../../services/shared_prefs_service.dart'; // Servis import edildi
+import '../../services/shared_prefs_service.dart'; 
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {
