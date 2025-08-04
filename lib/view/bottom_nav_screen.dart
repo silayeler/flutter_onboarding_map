@@ -14,6 +14,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   final List<PageRouteInfo> _routes = [
     const MapRoute(),
     const AboutRoute(),
+    const VideoRoute(), // ✅ 3. sekme eklendi
   ];
 
   @override
@@ -27,10 +28,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: tab.activeIndex,
             onTap: tab.setActiveIndex,
-            backgroundColor: Colors.red, 
-            selectedItemColor: Colors.white, 
-            unselectedItemColor:
-                Colors.white60, 
+            backgroundColor: Colors.redAccent,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white60,
             selectedLabelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
             ),
@@ -42,6 +42,10 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.info_outline),
                 label: 'Hakkında',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.video_library), // ✅ Yeni ikon
+                label: 'Video',
               ),
             ],
           ),

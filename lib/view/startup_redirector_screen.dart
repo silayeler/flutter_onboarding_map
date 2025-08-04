@@ -19,8 +19,8 @@ class _StartupRedirectorScreenState extends State<StartupRedirectorScreen> {
   }
 
   Future<void> _checkOnboarding() async {
-    final prefs = SharedPrefsService();
-    final seen = await prefs.hasSeenOnboarding();
+    final prefs = SharedPrefsService(); //siniftan prefs nesnesi olsutrudm ki fonk.lari kullanabileyim
+    final seen = await prefs.hasSeenOnboarding(); // oboardingin daha önce görülüp görülmediğini kontrol ediyo
 
     if (seen) {
       context.replaceRoute(const BottomNavRoute());
@@ -32,7 +32,7 @@ class _StartupRedirectorScreenState extends State<StartupRedirectorScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+      body: Center(child: CircularProgressIndicator()),//loandinggg
     );
   }
 }
