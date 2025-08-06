@@ -6,8 +6,8 @@ import 'viewmodel/map_tile_view_model.dart';
 import 'viewmodel/bottom_nav_view_model.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); /* asenkron servisleir baslatmadan önce gerekli */
+  await EasyLocalization.ensureInitialized();/* lang klasörünü okmak icin */
 
   runApp(
     EasyLocalization(
@@ -17,25 +17,25 @@ void main() async {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => MapTileViewModel()),
-          ChangeNotifierProvider(create: (_) => BottomNavViewModel()), // ✅ yeni
+          ChangeNotifierProvider(create: (_) => BottomNavViewModel()), 
         ],
-        child: const MainApp(),
+        child:  MainApp(), 
       ),
     ),
   );
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+ MainApp({super.key});
+  final AppRouter router = AppRouter();
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter().config(),
+      routerConfig: router.config(),
       locale: context.locale,
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
-    );
-  }
+);
+}
 }

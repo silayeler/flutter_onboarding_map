@@ -34,7 +34,7 @@ class MapScreen extends StatelessWidget {
               return mapVM.availableTiles.map((tile) {
                 return PopupMenuItem<String>(
                   value: tile,
-                  child: Text(tile),
+                 child: Text(tile.tr()),
                 );
               }).toList();
             },

@@ -1,5 +1,6 @@
 {
   "app_title": "City Guide",
+  "settings": "Settings",
   "language": "Language",
   "english": "English",
   "turkish": "Turkish",
@@ -16,6 +17,16 @@
   "latitude": "Latitude",
   "longitude": "Longitude",
   "video_player": "Video Player",
-"ts_video": "TS Video",
-"mp4_video": "MP4 Video"
+  "ts_video": "TS Video",
+  "mp4_video": "MP4 Video",
+  "normal": "Normal",
+  "dark": "Dark",
+  "light": "Light",
+  "satellite": "Satellite",
+  "terrain": "Terrain",
+  "onboard_desc_1": "Discover marked locations and learn the details!",
+  "onboard_desc_2": "Navigate the map and find places!",
+  "onboard_desc_3": "Add new places to your route and start exploring!",
+  "onboard_button": "Let's Get Started",
+  "onboard_skip": "Skip"
 }

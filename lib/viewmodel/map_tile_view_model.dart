@@ -8,13 +8,14 @@ class MapTileViewModel extends ChangeNotifier {
   List<PlaceModel> get places => _places;
 
   // Türkçe görünen ad => İngilizce sistem adı
-  final Map<String, String> _tileMap = {
-    'Normal': 'osm',
-    'Karanlık': 'dark',
-    'Açık': 'light',
-    'Uydu': 'satellite',
-    'Dağ': 'terrain',
-  };
+ final Map<String, String> _tileMap = {
+  'normal': 'osm',
+  'dark': 'dark',
+  'light': 'light',
+  'satellite': 'satellite',
+  'terrain': 'terrain',
+};
+
 
   // Kullanıcıya sunulacak görünen tile adları
   List<String> get availableTiles => _tileMap.keys.toList();

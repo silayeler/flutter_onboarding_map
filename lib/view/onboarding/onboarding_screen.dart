@@ -1,8 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../routes/app_router.dart';
-import '../../services/shared_prefs_service.dart'; 
+import '../../services/shared_prefs_service.dart';
 
 @RoutePage()
 class OnboardingScreen extends StatefulWidget {
@@ -22,9 +23,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   ];
 
   final List<String> texts = [
-    'İşaretli konumları keşfet, detayları öğren!',
-    'Harita üzerinde gez, mekanları bul!',
-    'Gezi rotana yeni yerler ekleyerek sen de keşfetmeye başla!',
+    'onboard_desc_1',
+    'onboard_desc_2',
+    'onboard_desc_3',
   ];
 
   @override
@@ -78,7 +79,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                         const SizedBox(height: 20),
                         Text(
-                          texts[index],
+                          texts[index].tr(), 
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
@@ -90,9 +91,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         if (index == lottieAnimations.length - 1)
                           ElevatedButton(
                             onPressed: _completeOnboarding,
-                            child: const Text(
-                              'Hadi Başlayalım',
-                              style: TextStyle(color: Colors.red),
+                            child: Text(
+                              'onboard_button'.tr(),
+                              style: const TextStyle(color: Colors.red),
                             ),
                           ),
                       ],
@@ -104,9 +105,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   right: 0,
                   child: TextButton(
                     onPressed: _completeOnboarding,
-                    child: const Text(
-                      'Atla',
-                      style: TextStyle(color: Colors.red),
+                    child: Text(
+                      'onboard_skip'.tr(),
+                      style: const TextStyle(color: Colors.red),
                     ),
                   ),
                 ),

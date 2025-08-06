@@ -18,5 +18,15 @@
   "longitude": "Boylam",
   "video_player": "Video Oynatıcı",
   "ts_video": "TS Video",
-  "mp4_video": "MP4 Video"
+  "mp4_video": "MP4 Video",
+  "normal": "Normal",
+  "dark": "Karanlık",
+  "light": "Açık",
+  "satellite": "Uydu",
+  "terrain": "Dağ",
+  "onboard_desc_1": "İşaretli konumları keşfet, detayları öğren!",
+  "onboard_desc_2": "Harita üzerinde gez, mekanları bul!",
+  "onboard_desc_3": "Gezi rotana yeni yerler ekleyerek sen de keşfetmeye başla!",
+  "onboard_button": "Hadi Başlayalım",
+  "onboard_skip": "Atla"
 }
