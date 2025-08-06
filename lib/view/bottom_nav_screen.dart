@@ -14,7 +14,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   final List<PageRouteInfo> _routes = [
     const MapRoute(),
     const AboutRoute(),
-    const VideoRoute(), // ✅ 3. sekme eklendi
+    const VideoRoute(),
   ];
 
   @override
@@ -44,7 +44,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                 label: 'Hakkında',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.video_library), // ✅ Yeni ikon
+                icon: Icon(Icons.video_library),
                 label: 'Video',
               ),
             ],

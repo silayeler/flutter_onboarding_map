@@ -24,9 +24,10 @@ class _VideoScreenState extends State<VideoScreen>
 
     _tsController = VlcPlayerController.network(
       'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-      hwAcc: HwAcc.full,
-      autoPlay: true,
-      options: VlcPlayerOptions(),
+      hwAcc: HwAcc.full, // daha az cpu kullnarak daha akıcı video oynatmA
+      autoPlay: false,
+      options: VlcPlayerOptions(
+      ),
     );
 
     _mp4Controller = VlcPlayerController.network(
@@ -92,7 +93,6 @@ class _VideoScreenState extends State<VideoScreen>
   }
 }
 
-// Ortak video widget
 class VideoTab extends StatefulWidget {
   final VlcPlayerController controller;
 
@@ -104,7 +104,7 @@ class VideoTab extends StatefulWidget {
 
 class _VideoTabState extends State<VideoTab>
     with AutomaticKeepAliveClientMixin {
-  bool isPlaying = false;
+  bool isPlaying = true;
 
   @override
   bool get wantKeepAlive => true;
@@ -145,7 +145,7 @@ class _VideoTabState extends State<VideoTab>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    super.build(context);  //automatickeepalivemixin den kaynaklı
     return Column(
       children: [
         Expanded(
@@ -157,12 +157,15 @@ class _VideoTabState extends State<VideoTab>
         ),
         IconButton(
           icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
-          onPressed: _togglePlayPause,
+          onPressed: _togglePlayPause, // isPlayingi güncelliyor
           iconSize: 40,
           color: Colors.redAccent,
         ),
         const SizedBox(height: 10),
       ],
+
+      
     );
+    
   }
 }
