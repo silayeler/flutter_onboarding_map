@@ -20,6 +20,7 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_vlc_player: ^7.4.2
   cupertino_icons: ^1.0.6
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -33,5 +34,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/explore.json
-    - assets/locatin.json
+    - assets/location.json
     - assets/man.json
+    - assets/lang/

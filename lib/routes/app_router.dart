@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map_onboarding/view/settings_screen.dart';
 import '../view/detail_screen.dart';
 import '../view/map_screen.dart';
 import '../view/onboarding/onboarding_screen.dart';
@@ -27,6 +28,7 @@ class AppRouter extends _$AppRouter {
             AutoRoute(page: MapRoute.page, path: 'map'),
             AutoRoute(page: AboutRoute.page, path: 'about'),
             AutoRoute(page: VideoRoute.page, path: 'video'),
+            AutoRoute(page: SettingsRoute.page, path: 'settings'),
 
           ],
         ),
