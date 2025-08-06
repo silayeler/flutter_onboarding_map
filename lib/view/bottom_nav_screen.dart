@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map_onboarding/routes/app_router.dart';
-import 'package:easy_localization/easy_localization.dart'; // ✅ eklendi
+import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
+import '../viewmodel/bottom_nav_view_model.dart'; // ✅ ekle
 
 @RoutePage()
 class BottomNavScreen extends StatefulWidget {
@@ -21,15 +23,28 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final tabProvider = context.watch<BottomNavViewModel>(); // ✅ dinle
+
     return AutoTabsRouter(
       routes: _routes,
       builder: (context, child) {
         final tab = AutoTabsRouter.of(context);
+
+        // Tab değiştiğinde sağlayıcı güncellensin
+        if (tab.activeIndex != tabProvider.currentIndex) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            tab.setActiveIndex(tabProvider.currentIndex);
+          });
+        }
+
         return Scaffold(
           body: child,
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: tab.activeIndex,
-            onTap: tab.setActiveIndex,
+            currentIndex: tabProvider.currentIndex,
+            onTap: (index) {
+              tab.setActiveIndex(index);
+              tabProvider.setIndex(index); // ✅ index'i kaydet
+            },
             backgroundColor: Colors.redAccent,
             selectedItemColor: Colors.white,
             unselectedItemColor: Colors.white70,

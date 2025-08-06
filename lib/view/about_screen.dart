@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 @RoutePage()
 class AboutScreen extends StatelessWidget {
@@ -10,14 +11,15 @@ class AboutScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Bilgi'),
-        content: const Text(
-          'Bu uygulama Flutter ile geliştirilmiş olup Türkiye\'deki önemli yerleri keşfetmenizi sağlar.',
-        ),
+        title: Text('info'.tr()),
+        content: Text('about_dialog'.tr()),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text('Kapat',style: TextStyle(color:Colors.red),),
+            child: Text(
+              'close'.tr(),
+              style: const TextStyle(color: Colors.red),
+            ),
           ),
         ],
       ),
@@ -28,7 +30,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Hakkında'),
+        title: Text('about'.tr()),
         centerTitle: true,
         backgroundColor: Colors.redAccent,
         foregroundColor: Colors.white,
@@ -39,7 +41,7 @@ class AboutScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              '''Bu uygulama Flutter ile geliştirilmiştir.\nSürüm: 1.0.0\n\nHarita tabanlı bu mobil uygulama ile Türkiye'deki önemli yerleri keşfedebilir, detaylı bilgilere ulaşabilir ve kullanıcı dostu arayüz sayesinde kolayca gezinebilirsiniz.\n\nFlutter’ın güçlü altyapısı ve modern tasarım öğeleriyle geliştirilen bu uygulama; harita görünümü, detay sayfaları ve gezinme menüsü gibi temel özellikleriyle pratik ve etkili bir kullanıcı deneyimi sunar.''',
+              'about_body'.tr(),
               style: GoogleFonts.montserrat(
                 fontSize: 18,
                 color: Colors.red,
@@ -52,7 +54,10 @@ class AboutScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.redAccent,
               ),
-              child: const Text('Uygulama Hakkında',style: TextStyle(color: Colors.white),),
+              child: Text(
+                'about_button'.tr(),
+                style: const TextStyle(color: Colors.white),
+              ),
             ),
           ],
         ),

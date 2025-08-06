@@ -6,5 +6,17 @@
   "turkish": "Türkçe",
   "map": "Harita",
   "about": "Hakkında",
-  "video": "Video"
+  "video": "Video",
+  "about_title": "Hakkında",
+  "about_button": "Uygulama Hakkında",
+  "about_dialog": "Bu uygulama Flutter ile geliştirilmiştir ve Türkiye'deki önemli yerleri keşfetmenizi sağlar.",
+  "about_body": "Bu uygulama Flutter ile geliştirilmiştir.\nSürüm: 1.0.0\n\nHarita tabanlı bu mobil uygulama ile Türkiye'deki önemli yerleri keşfedebilir, detaylı bilgilere ulaşabilir ve kullanıcı dostu arayüz sayesinde kolayca gezinebilirsiniz.\n\nFlutter’ın güçlü altyapısı ve modern tasarım öğeleriyle geliştirilen bu uygulama; harita görünümü, detay sayfaları ve gezinme menüsü gibi temel özellikleriyle pratik ve etkili bir kullanıcı deneyimi sunar.",
+  "info": "Bilgi",
+  "close": "Kapat",
+  "location": "Konum",
+  "latitude": "Enlem",
+  "longitude": "Boylam",
+  "video_player": "Video Oynatıcı",
+  "ts_video": "TS Video",
+  "mp4_video": "MP4 Video"
 }

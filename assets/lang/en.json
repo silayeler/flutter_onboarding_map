@@ -1,10 +1,21 @@
 {
   "app_title": "City Guide",
-  "settings": "Settings",
   "language": "Language",
   "english": "English",
   "turkish": "Turkish",
   "map": "Map",
   "about": "About",
-  "video": "Video"
+  "video": "Video",
+  "about_title": "About",
+  "about_button": "About App",
+  "about_dialog": "This app is built with Flutter and allows you to explore important places in Türkiye.",
+  "about_body": "This application is developed with Flutter.\nVersion: 1.0.0\n\nWith this map-based mobile application, you can explore important places in Türkiye, access detailed information, and easily navigate through the user-friendly interface.\n\nBuilt using Flutter’s powerful infrastructure and modern design elements, the app offers practical and effective user experience with features like map view, detail pages, and a navigation menu.",
+  "info": "Info",
+  "close": "Close",
+  "location": "Location",
+  "latitude": "Latitude",
+  "longitude": "Longitude",
+  "video_player": "Video Player",
+"ts_video": "TS Video",
+"mp4_video": "MP4 Video"
 }

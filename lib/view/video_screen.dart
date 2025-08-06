@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_vlc_player/flutter_vlc_player.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 @RoutePage()
 class VideoScreen extends StatefulWidget {
@@ -24,10 +25,9 @@ class _VideoScreenState extends State<VideoScreen>
 
     _tsController = VlcPlayerController.network(
       'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-      hwAcc: HwAcc.full, // daha az cpu kullnarak daha akıcı video oynatmA
+      hwAcc: HwAcc.full,
       autoPlay: false,
-      options: VlcPlayerOptions(
-      ),
+      options: VlcPlayerOptions(),
     );
 
     _mp4Controller = VlcPlayerController.network(
@@ -64,7 +64,7 @@ class _VideoScreenState extends State<VideoScreen>
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverAppBar(
-            title: const Text('Video Oynatıcı'),
+            title: Text('video_player'.tr()),
             centerTitle: true,
             backgroundColor: Colors.redAccent,
             foregroundColor: Colors.white,
@@ -74,9 +74,9 @@ class _VideoScreenState extends State<VideoScreen>
               indicatorColor: Colors.white,
               labelColor: Colors.white,
               unselectedLabelColor: Colors.white60,
-              tabs: const [
-                Tab(text: 'TS Video'),
-                Tab(text: 'MP4 Video'),
+              tabs: [
+                Tab(text: 'ts_video'.tr()),
+                Tab(text: 'mp4_video'.tr()),
               ],
             ),
           ),
@@ -145,7 +145,7 @@ class _VideoTabState extends State<VideoTab>
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);  //automatickeepalivemixin den kaynaklı
+    super.build(context);
     return Column(
       children: [
         Expanded(
@@ -157,15 +157,12 @@ class _VideoTabState extends State<VideoTab>
         ),
         IconButton(
           icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow),
-          onPressed: _togglePlayPause, // isPlayingi güncelliyor
+          onPressed: _togglePlayPause,
           iconSize: 40,
           color: Colors.redAccent,
         ),
         const SizedBox(height: 10),
       ],
-
-      
     );
-    
   }
 }
