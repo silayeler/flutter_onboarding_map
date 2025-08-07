@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map_onboarding/routes/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import '../viewmodel/bottom_nav_view_model.dart'; // ✅ ekle
+import '../viewmodel/bottom_nav_view_model.dart'; 
 
 @RoutePage()
 class BottomNavScreen extends StatefulWidget {
@@ -23,7 +23,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final tabProvider = context.watch<BottomNavViewModel>(); // ✅ dinle
+    final tabProvider = context.watch<BottomNavViewModel>(); 
 
     return AutoTabsRouter(
       routes: _routes,
@@ -35,7 +35,9 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             tab.setActiveIndex(tabProvider.currentIndex);
           });
-        }
+        } /*Eğer AutoTabsRouterdaki aktif index ile Providerdaki index uyuşmuyorsa senkronize edili
+
+ uygulama dili değiştiğinde veya dışarıdan sekme değiştirme komutu geldiğinde tab çakışmalarını önler */
 
         return Scaffold(
           body: child,
@@ -43,7 +45,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             currentIndex: tabProvider.currentIndex,
             onTap: (index) {
               tab.setActiveIndex(index);
-              tabProvider.setIndex(index); // ✅ index'i kaydet
+              tabProvider.setIndex(index); 
             },
             backgroundColor: Colors.redAccent,
             selectedItemColor: Colors.white,

@@ -28,5 +28,6 @@
   "onboard_desc_2": "Navigate the map and find places!",
   "onboard_desc_3": "Add new places to your route and start exploring!",
   "onboard_button": "Let's Get Started",
-  "onboard_skip": "Skip"
+  "onboard_skip": "Skip",
+  "theme_mode": "Theme Mode"
 }

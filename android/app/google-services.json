@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "768676626786",
+    "project_id": "flutter-map-onboarding",
+    "storage_bucket": "flutter-map-onboarding.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768676626786:android:c3a6cb70b86b8a6d95ec3b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_map_onboarding"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYWKmJff9w9FETmKs52DnKvSov4mKDqls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

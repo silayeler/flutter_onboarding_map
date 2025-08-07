@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:provider/provider.dart';
-
 import '../routes/app_router.dart';
 import '../viewmodel/bottom_nav_view_model.dart';
+import '../viewmodel/theme_provider.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
 
 @RoutePage()
 class SettingsScreen extends StatefulWidget {
@@ -26,6 +27,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _loadLanguage() async {
+    //burada dili sharedla kontol ediyor
     final prefs = await SharedPreferences.getInstance();
     final langCode = prefs.getString('locale') ?? 'tr';
     setState(() {
@@ -42,12 +44,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
       isTurkish = turkishSelected;
     });
 
-    // ✅ Dil değişince tabIndex sıfırlanmasın, geri dön
     final tabProvider = context.read<BottomNavViewModel>();
     Future.delayed(const Duration(milliseconds: 200), () {
       context.router.replace(const BottomNavRoute());
-      tabProvider.setIndex(3); // 3 = settings sayfası index'i
+      tabProvider.setIndex(3); // 3 = settings
     });
+  await FirebaseAnalytics.instance.logEvent(
+    name: 'language_changed',
+    parameters: {
+      'new_locale': newLocale.languageCode,
+    },
+  );
   }
 
   @override
@@ -66,6 +73,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
             subtitle: Text(isTurkish ? 'turkish'.tr() : 'english'.tr()),
             value: isTurkish,
             onChanged: (value) => _changeLanguage(value),
+          ),
+          SwitchListTile(
+            title: Text('theme_mode'.tr()),
+            subtitle: Text(
+                context.watch<ThemeProvider>().themeMode == ThemeMode.dark
+                    ? 'Dark'
+                    : 'Light'),
+            value: context.watch<ThemeProvider>().themeMode == ThemeMode.dark,
+            onChanged: (value) {
+              context.read<ThemeProvider>().toggleTheme(value);
+            },
           ),
         ],
       ),

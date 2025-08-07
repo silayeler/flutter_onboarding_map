@@ -4,10 +4,24 @@ import 'package:flutter_map_onboarding/routes/app_router.dart';
 import 'package:provider/provider.dart';
 import 'viewmodel/map_tile_view_model.dart';
 import 'viewmodel/bottom_nav_view_model.dart';
+import 'viewmodel/theme_provider.dart';
+
+// Firebase paketleri
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+import 'firebase_options.dart'; // flutterfire configure komutu ile oluşturulan dosya
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); /* asenkron servisleir baslatmadan önce gerekli */
-  await EasyLocalization.ensureInitialized();/* lang klasörünü okmak icin */
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Asenkron servisleri başlatmadan önce gerekli
+  await EasyLocalization
+      .ensureInitialized(); // Localization dosyalarını okumak için gerekli
+
+  // Firebase'i initialize et
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     EasyLocalization(
@@ -17,25 +31,38 @@ void main() async {
       child: MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => MapTileViewModel()),
-          ChangeNotifierProvider(create: (_) => BottomNavViewModel()), 
+          ChangeNotifierProvider(create: (_) => BottomNavViewModel()),
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ],
-        child:  MainApp(), 
+        child: MainApp(),
       ),
     ),
   );
 }
 
 class MainApp extends StatelessWidget {
- MainApp({super.key});
+  MainApp({super.key});
+
   final AppRouter router = AppRouter();
+
+  // Firebase Analytics örneği oluştur (gerekirse paylaşabilirsin)
+  final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: router.config(),
-      locale: context.locale,
-      supportedLocales: context.supportedLocales,
-      localizationsDelegates: context.localizationDelegates,
-);
-}
+    return Consumer<ThemeProvider>(
+      builder: (context, themeProvider, _) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.light(),
+          darkTheme: ThemeData.dark(),
+          themeMode: themeProvider.themeMode,
+          routerConfig: router.config(),
+          locale: context.locale,
+          supportedLocales: context.supportedLocales,
+          localizationsDelegates: context.localizationDelegates,
+        );
+      },
+    );
+  }
 }

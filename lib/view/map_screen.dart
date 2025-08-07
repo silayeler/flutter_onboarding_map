@@ -7,6 +7,7 @@ import 'package:auto_route/auto_route.dart';
 
 import '../../viewmodel/map_tile_view_model.dart';
 import '../routes/app_router.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 @RoutePage()
 class MapScreen extends StatelessWidget {
@@ -34,7 +35,7 @@ class MapScreen extends StatelessWidget {
               return mapVM.availableTiles.map((tile) {
                 return PopupMenuItem<String>(
                   value: tile,
-                 child: Text(tile.tr()),
+                  child: Text(tile.tr()),
                 );
               }).toList();
             },
@@ -59,20 +60,29 @@ class MapScreen extends StatelessWidget {
                   width: 40.0,
                   height: 40.0,
                   point: LatLng(place.latitude, place.longitude),
-                  child: GestureDetector(
-                    onTap: () {
-                      context.pushRoute(
-                        DetailRoute(
-                          title: place.name,
-                          description: place.description,
-                          lat: place.latitude,
-                          long: place.longitude,
-                        ),
-                      );
-                    },
-                    child: const Icon(Icons.location_on,
-                        color: Colors.red, size: 30),
-                  ),
+                 child: GestureDetector(
+  onTap: () {
+    FirebaseAnalytics.instance.logEvent(
+      name: 'place_detail_viewed', //firebasede görünecek olan isim
+      parameters: {
+        'place_name': place.name,
+        'latitude': place.latitude,
+        'longitude': place.longitude,
+      },
+    );
+
+    context.pushRoute(
+      DetailRoute(
+        title: place.name,
+        description: place.description,
+        lat: place.latitude,
+        long: place.longitude,
+      ),
+    );
+  },
+  child: const Icon(Icons.location_on, color: Colors.red, size: 30),
+),
+
                 );
               }).toList(),
             ),
