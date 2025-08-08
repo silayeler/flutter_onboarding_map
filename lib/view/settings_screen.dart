@@ -38,6 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _changeLanguage(bool turkishSelected) async {
     final prefs = await SharedPreferences.getInstance();
     final newLocale = turkishSelected ? const Locale('tr') : const Locale('en');
+    
     await context.setLocale(newLocale);
     await prefs.setString('locale', newLocale.languageCode);
     setState(() {

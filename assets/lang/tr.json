@@ -29,6 +29,25 @@
   "onboard_desc_3": "Gezi rotana yeni yerler ekleyerek sen de keşfetmeye başla!",
   "onboard_button": "Hadi Başlayalım",
   "onboard_skip": "Atla",
-  "theme_mode": "Tema Modu"
-
+  "theme_mode": "Tema Modu",
+  "locations": "Konumlar",
+  "locations_title": "Konumlar",
+  "common_error": "Bir hata oluştu",
+  "locations_empty": "Kayıt yok",
+  "delete_confirm_title": "Silinsin mi?",
+  "delete_confirm_content": "Bu kaydı sil",
+  "cancel": "Vazgeç",
+  "delete": "Sil",
+  "add_location_title": "Yeni Konum",
+  "close": "Kapat",
+  "name_label": "Ad",
+  "desc_label": "Açıklama",
+  "category_label": "Kategori ",
+  "lat_label": "Enlem ",
+  "lng_label": "Boylam",
+  "number_required": "Geçerli sayı gir",
+  "lat_range": "−90..90 arası olmalı",
+  "lng_range": "−180..180 arası olmalı",
+  "reset": "Sıfırla",
+  "save": "Kaydet"
 }

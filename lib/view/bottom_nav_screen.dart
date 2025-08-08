@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map_onboarding/routes/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:provider/provider.dart';
-import '../viewmodel/bottom_nav_view_model.dart'; 
+import '../viewmodel/bottom_nav_view_model.dart';
 
 @RoutePage()
 class BottomNavScreen extends StatefulWidget {
@@ -19,11 +19,12 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
     const AboutRoute(),
     const VideoRoute(),
     const SettingsRoute(),
+    const LocationsRoute(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    final tabProvider = context.watch<BottomNavViewModel>(); 
+    final tabProvider = context.watch<BottomNavViewModel>();
 
     return AutoTabsRouter(
       routes: _routes,
@@ -45,7 +46,7 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
             currentIndex: tabProvider.currentIndex,
             onTap: (index) {
               tab.setActiveIndex(index);
-              tabProvider.setIndex(index); 
+              tabProvider.setIndex(index);
             },
             backgroundColor: Colors.redAccent,
             selectedItemColor: Colors.white,
@@ -67,6 +68,10 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
               BottomNavigationBarItem(
                 icon: const Icon(Icons.settings),
                 label: 'settings'.tr(),
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.place_outlined),
+                label: 'locations'.tr(), 
               ),
             ],
           ),

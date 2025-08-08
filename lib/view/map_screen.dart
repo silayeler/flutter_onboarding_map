@@ -60,29 +60,29 @@ class MapScreen extends StatelessWidget {
                   width: 40.0,
                   height: 40.0,
                   point: LatLng(place.latitude, place.longitude),
-                 child: GestureDetector(
-  onTap: () {
-    FirebaseAnalytics.instance.logEvent(
-      name: 'place_detail_viewed', //firebasede görünecek olan isim
-      parameters: {
-        'place_name': place.name,
-        'latitude': place.latitude,
-        'longitude': place.longitude,
-      },
-    );
+                  child: GestureDetector(
+                    onTap: () {
+                      FirebaseAnalytics.instance.logEvent(
+                        name:
+                            'place_detail_viewed', 
+                        parameters: {
+                          'place_name': place.name,
+                          'category': place.category,
+                        },
+                      );
 
-    context.pushRoute(
-      DetailRoute(
-        title: place.name,
-        description: place.description,
-        lat: place.latitude,
-        long: place.longitude,
-      ),
-    );
-  },
-  child: const Icon(Icons.location_on, color: Colors.red, size: 30),
-),
-
+                      context.pushRoute(
+                        DetailRoute(
+                          title: place.name,
+                          description: place.description,
+                          lat: place.latitude,
+                          long: place.longitude,
+                        ),
+                      );
+                    },
+                    child: const Icon(Icons.location_on,
+                        color: Colors.red, size: 30),
+                  ),
                 );
               }).toList(),
             ),

@@ -40,6 +40,12 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    LocationsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const LocationsScreen(),
+      );
+    },
     MapRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -151,6 +157,20 @@ class DetailRouteArgs {
   String toString() {
     return 'DetailRouteArgs{key: $key, title: $title, description: $description, lat: $lat, long: $long}';
   }
+}
+
+/// generated route for
+/// [LocationsScreen]
+class LocationsRoute extends PageRouteInfo<void> {
+  const LocationsRoute({List<PageRouteInfo>? children})
+      : super(
+          LocationsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'LocationsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

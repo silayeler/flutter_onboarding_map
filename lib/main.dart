@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'viewmodel/map_tile_view_model.dart';
 import 'viewmodel/bottom_nav_view_model.dart';
 import 'viewmodel/theme_provider.dart';
+import 'viewmodel/place_view_model.dart'; // ✅ Eklendi
 
 // Firebase paketleri
 import 'package:firebase_core/firebase_core.dart';
@@ -13,10 +14,8 @@ import 'package:firebase_analytics/observer.dart';
 import 'firebase_options.dart'; // flutterfire configure komutu ile oluşturulan dosya
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); // Asenkron servisleri başlatmadan önce gerekli
-  await EasyLocalization
-      .ensureInitialized(); // Localization dosyalarını okumak için gerekli
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await EasyLocalization.ensureInitialized(); 
 
   // Firebase'i initialize et
   await Firebase.initializeApp(
@@ -33,6 +32,7 @@ void main() async {
           ChangeNotifierProvider(create: (_) => MapTileViewModel()),
           ChangeNotifierProvider(create: (_) => BottomNavViewModel()),
           ChangeNotifierProvider(create: (_) => ThemeProvider()),
+          ChangeNotifierProvider(create: (_) => PlaceViewModel()), // ✅ Eklendi
         ],
         child: MainApp(),
       ),
@@ -44,8 +44,6 @@ class MainApp extends StatelessWidget {
   MainApp({super.key});
 
   final AppRouter router = AppRouter();
-
-  // Firebase Analytics örneği oluştur (gerekirse paylaşabilirsin)
   final FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   @override
